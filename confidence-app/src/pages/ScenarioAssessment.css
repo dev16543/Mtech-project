@@ -1,0 +1,110 @@
+.scenario-assessment .assessment-header {
+  margin-bottom: 1.5rem;
+}
+
+.scenario-assessment h1 {
+  font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+  margin: 0 0 0.5rem;
+  color: var(--text);
+}
+
+.scenario-assessment .assessment-header > p {
+  color: var(--text-muted);
+  margin: 0 0 1rem;
+}
+
+.progress-wrap {
+  position: relative;
+  height: 28px;
+  background: var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background: var(--primary);
+  border-radius: 8px;
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text);
+  z-index: 1;
+}
+
+.question-card {
+  margin-bottom: 1rem;
+}
+
+.pillar-tag {
+  display: inline-block;
+  font-size: 0.8rem;
+  color: var(--primary);
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.scenario-text {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  margin: 0 0 1.5rem;
+  color: var(--text);
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.option-btn {
+  text-align: left;
+  padding: 1rem 1.25rem;
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  font-size: 0.95rem;
+  line-height: 1.4;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.option-btn:hover {
+  border-color: var(--primary);
+  background: #ecfeff;
+}
+
+.option-btn.selected {
+  border-color: var(--primary);
+  background: #ecfeff;
+  font-weight: 500;
+  box-shadow: 0 0 0 2px var(--primary-glow);
+}
+
+.question-nav {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.back-link {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+}
+
+@media (min-width: 640px) {
+  .scenario-text {
+    font-size: 1.2rem;
+  }
+}

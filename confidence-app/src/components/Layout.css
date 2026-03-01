@@ -1,0 +1,164 @@
+.header {
+  background: var(--header-bg);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header .logo {
+  color: var(--header-text);
+}
+
+.header .logo span {
+  color: var(--accent);
+}
+
+.header .nav a {
+  color: rgba(241, 245, 249, 0.85);
+}
+
+.header .nav a:hover,
+.header .nav a.active {
+  color: var(--accent);
+}
+
+.header .btn-secondary {
+  background: rgba(34, 211, 238, 0.15);
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.header .btn-secondary:hover {
+  background: rgba(34, 211, 238, 0.25);
+  color: white;
+  border-color: var(--accent);
+}
+
+.header .menu-toggle span {
+  background: var(--header-text);
+}
+
+/* Keep navbar same as login/app pages: dark header everywhere */
+.header-landing {
+  background: var(--header-bg);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.logo {
+  font-size: 1.35rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.nav {
+  display: none;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nav a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav a:hover,
+.nav a.active {
+  color: var(--primary);
+}
+
+.btn-sm {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+}
+
+.menu-toggle {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+
+.menu-toggle span {
+  width: 24px;
+  height: 2px;
+  border-radius: 1px;
+}
+
+@media (min-width: 768px) {
+  .nav {
+    display: flex;
+  }
+  .menu-toggle {
+    display: none;
+  }
+}
+
+body.nav-open .nav {
+  display: flex;
+  position: fixed;
+  top: 60px;
+  left: 0;
+  right: 0;
+  background: var(--header-bg);
+  flex-direction: column;
+  padding: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  z-index: 99;
+}
+
+.header .btn-logout {
+  color: rgba(241, 245, 249, 0.9);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.header .btn-logout:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.main {
+  flex: 1;
+  min-height: calc(100vh - 140px);
+}
+
+.footer {
+  background: var(--footer-bg);
+  color: rgba(241, 245, 249, 0.8);
+  padding: 1.5rem 1rem;
+  text-align: center;
+  font-size: 0.875rem;
+}
+
+.footer p {
+  margin: 0;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.footer-credit {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  opacity: 0.95;
+}
+
+.nav-link {
+  color: rgba(241, 245, 249, 0.85);
+}
+
+.header-landing .nav-link:hover {
+  color: var(--accent);
+}

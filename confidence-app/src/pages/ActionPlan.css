@@ -1,0 +1,41 @@
+.action-plan h1 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin: 0 0 0.5rem;
+  color: var(--text);
+}
+
+.action-plan .intro {
+  color: var(--text-muted);
+  margin: 0 0 2rem;
+  line-height: 1.5;
+}
+
+.plan-section {
+  margin-bottom: 1.5rem;
+}
+
+.plan-section h2 {
+  font-size: 1.1rem;
+  margin: 0 0 1rem;
+  color: var(--text);
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.exercise-list {
+  margin: 0;
+  padding-left: 1.25rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+
+.exercise-list li {
+  margin-bottom: 0.75rem;
+}
+
+.plan-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+}
