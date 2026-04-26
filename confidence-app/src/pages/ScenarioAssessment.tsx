@@ -1,24 +1,38 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { SCENARIO_QUESTIONS, PILLARS } from '../data/questions'
+import { SCENARIO_QUESTIONS, PILLARS, type AnswerValue, type ScenarioQuestion } from '../data/questions'
+import { calculateAssessmentReport, saveAssessmentReport } from '../data/reportData'
 import './ScenarioAssessment.css'
+
+function shuffleOptions(question: ScenarioQuestion): ScenarioQuestion {
+  const options = [...question.options]
+
+  for (let index = options.length - 1; index > 0; index -= 1) {
+    const swapIndex = Math.floor(Math.random() * (index + 1))
+    ;[options[index], options[swapIndex]] = [options[swapIndex], options[index]]
+  }
+
+  return { ...question, options }
+}
 
 export default function ScenarioAssessment() {
   const navigate = useNavigate()
   const [current, setCurrent] = useState(0)
-  const [answers, setAnswers] = useState<Record<number, 'low' | 'moderate' | 'high'>>({})
+  const [answers, setAnswers] = useState<Record<number, AnswerValue>>({})
+  const [questions] = useState(() => SCENARIO_QUESTIONS.map(shuffleOptions))
 
-  const q = SCENARIO_QUESTIONS[current]
-  const total = SCENARIO_QUESTIONS.length
+  const q = questions[current]
+  const total = questions.length
   const progress = ((current + 1) / total) * 100
 
-  const handleOption = (value: 'low' | 'moderate' | 'high') => {
+  const handleOption = (value: AnswerValue) => {
     const next = { ...answers, [q.id]: value }
     setAnswers(next)
     if (current + 1 < total) {
       setCurrent(current + 1)
     } else {
-      // Done: go to report (hardcoded frontend uses reportData for display)
+      const report = calculateAssessmentReport(next)
+      saveAssessmentReport(report)
       navigate('/report')
     }
   }

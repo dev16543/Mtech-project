@@ -8,9 +8,11 @@ export default function Layout() {
   const navigate = useNavigate()
   const { isLoggedIn, logout } = useAuth()
   const isLanding = location.pathname === '/'
+  const logoTarget = isLoggedIn ? '/dashboard' : '/'
 
   useEffect(() => {
     document.body.classList.remove('nav-open')
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
   }, [location.pathname])
 
   const handleLogout = () => {
@@ -22,7 +24,7 @@ export default function Layout() {
     <div className="layout">
       <header className={`header ${isLanding ? 'header-landing' : ''}`}>
         <div className="container header-inner">
-          <Link to="/" className="logo">
+          <Link to={logoTarget} className="logo">
             Confidence<span>AI</span>
           </Link>
           <nav className="nav">

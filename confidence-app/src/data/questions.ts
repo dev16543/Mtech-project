@@ -10,12 +10,13 @@ export const PILLARS = [
 ] as const
 
 export type PillarIndex = 0 | 1 | 2 | 3 | 4
+export type AnswerValue = 'low' | 'moderate' | 'high'
 
 export interface ScenarioQuestion {
   id: number
   pillar: PillarIndex
   scenario: string
-  options: { label: string; value: 'low' | 'moderate' | 'high' }[]
+  options: { label: string; value: AnswerValue }[]
 }
 
 export const SCENARIO_QUESTIONS: ScenarioQuestion[] = [

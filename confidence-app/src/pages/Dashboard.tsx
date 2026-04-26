@@ -1,17 +1,11 @@
 import { Link } from 'react-router-dom'
+import { getDashboardTips, getStoredAssessmentReport } from '../data/reportData'
 import './Dashboard.css'
 
-// Hardcoded previous score and tips for demo
-const PREVIOUS_SCORE = 68
-const TIPS = [
-  'Practice accepting compliments with a simple "Thank you" without deflecting.',
-  'After a setback, write down one thing you learned and one small next step.',
-  'Start meetings or conversations by stating one clear point to build speaking confidence.',
-  'When deciding, set a time limit (e.g. 10 minutes) to avoid overthinking.',
-  'Ask one person for specific feedback this week and note what you will try differently.',
-]
-
 export default function Dashboard() {
+  const latestReport = getStoredAssessmentReport()
+  const tips = getDashboardTips(latestReport)
+
   return (
     <div className="dashboard page">
       <div className="container">
@@ -29,15 +23,25 @@ export default function Dashboard() {
 
         <section className="dashboard-section card">
           <h2>Previous Score</h2>
-          <p className="score-demo">Last overall confidence score (demo): <strong>{PREVIOUS_SCORE}%</strong></p>
-          <p className="text-muted">Take the assessment again to see an updated score and pillar breakdown.</p>
-          <Link to="/report" className="link">View sample report</Link>
+          {latestReport ? (
+            <>
+              <p className="score-demo">Last overall confidence score: <strong>{latestReport.overallScore}%</strong></p>
+              <p className="text-muted">Your latest report is based on the choices from your most recent scenario assessment.</p>
+              <Link to="/report" className="link">View latest report</Link>
+            </>
+          ) : (
+            <>
+              <p className="score-demo">No completed assessment yet.</p>
+              <p className="text-muted">Take the scenario assessment to generate your first confidence report.</p>
+              <Link to="/assessment" className="link">Start assessment</Link>
+            </>
+          )}
         </section>
 
         <section className="dashboard-section card">
           <h2>Tips &amp; Articles</h2>
           <ul className="tips-list">
-            {TIPS.map((tip, i) => (
+            {tips.map((tip, i) => (
               <li key={i}>{tip}</li>
             ))}
           </ul>
